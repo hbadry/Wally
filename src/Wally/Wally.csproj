@@ -1,0 +1,127 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Discord.Net" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(SolutionDir)Dlls\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.md5" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.md5.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha1" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha1.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha256" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha256.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha384" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha384.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha512" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libopus.dll.sha512.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.md5" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.md5.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha1" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha1.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha256" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha256.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha384" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha384.sig" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha512" />
+    <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha512.sig" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ffplay.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ffprobe.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="opus.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.md5">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.md5.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha1.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha256">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha256.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha384">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha384.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha512">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libopus.dll.sha512.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.md5">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.md5.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha1.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha256">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha256.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha384">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha384.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha512">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libsodium.dll.sha512.sig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="test.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
