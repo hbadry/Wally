@@ -1,0 +1,28 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+env:
+  GithubBotToken: 'NzIyMTYxMDA5NTE0Nzc0NTU4.XufC2Q.bLMIwWq0MZl_1E8GOXcbrj_UDuw'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Run
+      run: dotnet run
