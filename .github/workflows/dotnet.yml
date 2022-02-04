@@ -2,10 +2,8 @@ name: .NET
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  schedule:
+    - cron:  '0 */6 * * *'
 env:
   GithubBotToken: ${{ secrets.GITHUBBOT_TOKEN }}
 
@@ -15,6 +13,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
