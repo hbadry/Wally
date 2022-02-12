@@ -32,7 +32,7 @@ jobs:
             dir
             cd bin
             dir
-            cd Release
+            cd Debug
             dir
     - name: Run
       run: dotnet run --project src\Wally\Wally.csproj
