@@ -34,5 +34,7 @@ jobs:
             dir
             cd Debug
             dir
+            cd net5.0
+            dir
     - name: Run
       run: dotnet run --project src\Wally\Wally.csproj
