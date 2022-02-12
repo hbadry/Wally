@@ -26,5 +26,9 @@ jobs:
       run: dotnet restore src/Wally
     - name: Build
       run: dotnet build src/Wally --no-restore
+    - name: before-run-test
+      run: |
+            cd src/Wally
+            dir
     - name: Run
       run: dotnet run --project src\Wally\Wally.csproj
