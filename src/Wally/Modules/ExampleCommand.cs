@@ -47,10 +47,14 @@ namespace Wally.Modules
 
 
         }
-        public static IEnumerable<string> Split(string str, int chunkSize)
+        [Command("create-file")]
+        public async Task CreateFiles([Remainder] string args = null)
         {
-            return Enumerable.Range(0, str.Length / chunkSize)
-                .Select(i => str.Substring(i * chunkSize, chunkSize));
+            string fileName = "testFile.txt";
+            if (args != null)
+                fileName = args;
+            using FileStream fs = File.Create(fileName);
+            await ReplyAsync("Finished");
         }
         [Command("8ball")]
         [Alias("ask")]
