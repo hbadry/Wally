@@ -39,6 +39,7 @@
     <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha384.sig" />
     <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha512" />
     <None Remove="C:\Users\Hassan Badry\Source\Repos\Discord.net\Dlls\libsodium.dll.sha512.sig" />
+    <None Remove="tokes.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Update="config.json">

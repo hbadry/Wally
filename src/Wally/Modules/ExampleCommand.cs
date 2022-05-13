@@ -2,6 +2,8 @@
 using Discord.Commands;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +32,26 @@ namespace Wally.Modules
         {
             await ReplyAsync("طيزك مربعة");
         }
+        [Command("list-files")]
+        public async Task GetCurrentFiles()
+        {
+            string[] allfiles = Directory.GetFiles(Environment.CurrentDirectory, "*.*", SearchOption.AllDirectories);
+            //string str = "";
 
+            await ReplyAsync("Files in this directory are");
+            foreach (string file in allfiles)
+            {
+               await ReplyAsync(file + "\n");
+            }
+            await ReplyAsync("Finished");
+
+
+        }
+        public static IEnumerable<string> Split(string str, int chunkSize)
+        {
+            return Enumerable.Range(0, str.Length / chunkSize)
+                .Select(i => str.Substring(i * chunkSize, chunkSize));
+        }
         [Command("8ball")]
         [Alias("ask")]
         public async Task AskEightBall([Remainder] string args = null)
