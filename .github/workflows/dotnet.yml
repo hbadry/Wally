@@ -1,0 +1,40 @@
+name: .NET
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 */6 * * *'
+env:
+  GithubBotToken: ${{ secrets.GITHUBBOT_TOKEN }}
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore src/Wally
+    - name: Build
+      run: dotnet build src/Wally --no-restore
+    - name: before-run-test
+      run: |
+            cd src/Wally
+            dir
+            cd bin
+            dir
+            cd Debug
+            dir
+            cd net5.0
+            dir
+    - name: Run
+      run: dotnet run --project src\Wally\Wally.csproj
