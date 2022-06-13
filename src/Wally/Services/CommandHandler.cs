@@ -7,6 +7,8 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using Wally.Messages;
+using Wally.Extensions;
 
 namespace Wally.Services
 {
@@ -18,6 +20,7 @@ namespace Wally.Services
         private readonly DiscordSocketClient _client;
         private readonly IServiceProvider _services;
         private List<ulong> _adminUsers = new List<ulong>() { 449229759055003659 };
+        private List<ulong> essiam = new List<ulong>(){ 721696110657142814 , 678979054778449968 };
 
         public CommandHandler(IServiceProvider services)
         {
@@ -61,12 +64,24 @@ namespace Wally.Services
             // get prefix from the configuration file
             char prefix = Char.Parse(_config["Prefix"]);
             #region Manage static messages
+            if (new Random().Next(0,10) == 1)
+            {
+                if (essiam.Contains(message.Author.Id))
+                {
+                    await message.Channel.SendMessageAsync(EsiamMessages.messages.RandomItem());
+                }
+            }
             if (message.Content.Equals("4"))
             {
                 if (_adminUsers.Contains(message.Author.Id))
                     await message.Channel.SendMessageAsync("مطبعة");
                 else
                     await message.Channel.SendMessageAsync("طيزك مربعة");
+                return;
+            }
+            else if (message.Content.Equals("اربعه"))
+            {
+                await message.Channel.SendMessageAsync("هيخوهيخو طيزك مربعة بردوا");
                 return;
             }
             #endregion
