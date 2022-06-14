@@ -24,6 +24,7 @@ namespace Wally
             var _builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile(path: "config.json")
+                .AddJsonFile(path: "config.development.json",optional:true)
                 .AddEnvironmentVariables();
 
 

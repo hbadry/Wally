@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
+using Wally.Utility;
 
 public class AudioModule : ModuleBase<ICommandContext>
 {
@@ -33,8 +34,17 @@ public class AudioModule : ModuleBase<ICommandContext>
     }
 
     [Command("play", RunMode = RunMode.Async)]
-    public async Task PlayCmd([Remainder] string song)
+    public async Task PlayCmd([Remainder] string searchKeyword)
     {
-        await _service.SendAudioAsync(Context.Guild, Context.Channel, song);
+        await ReplyAsync("Gathering data please wait");
+        var music  = await UtilityHelper.SearchYoutube(searchKeyword);
+        if (music == null)
+        {
+            await ReplyAsync("Can't find these audio");
+            return;
+        }
+        string songName = UtilityHelper.SaveMP3("data", music.Url);
+        await _service.JoinAudio(Context.Guild, (Context.User as IVoiceState).VoiceChannel);
+        await _service.SendAudioAsync(Context.Guild, Context.Channel,songName);
     }
 }

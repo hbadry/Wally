@@ -22,10 +22,10 @@ using YouTubeSearch;
 //}
 #endregion
 #region Code will download audio only version
-//SaveMP3("videos/", "https://www.youtube.com/watch?v=zW_tg3tr3ak");
+SaveMP3("videos/", "https://www.youtube.com/watch?v=zW_tg3tr3ak");
 #endregion
 #region Search on youtube
-Console.WriteLine((await SearchYoutube("jojo op 4 v2")).Url);
+//Console.WriteLine((await SearchYoutube("jojo op 4 v2")).Url);
 #endregion
 static void SaveMP3(string SaveToFolder, string VideoURL, string MP3Name=null)
 {

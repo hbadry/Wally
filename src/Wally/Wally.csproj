@@ -7,11 +7,16 @@
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.1.0" />
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="VideoLibrary" Version="3.1.9" />
+    <PackageReference Include="YouTubeSearch" Version="2.2.6" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(SolutionDir)Dlls\**" CopyToOutputDirectory="PreserveNewest" />

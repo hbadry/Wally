@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 /src/Wally/tokes.txt
 /src/Wally/Properties/launchSettings.json
+/src/Wally/config.development.json
