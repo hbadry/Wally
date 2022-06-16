@@ -64,7 +64,7 @@ namespace Wally.Services
             // get prefix from the configuration file
             char prefix = Char.Parse(_config["Prefix"]);
             #region Manage static messages
-            if (new Random().Next(0,10) == 1)
+            if (new Random().Next(0,3) == 1)
             {
                 if (essiam.Contains(message.Author.Id))
                 {
