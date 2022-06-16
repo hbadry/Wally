@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Audio;
@@ -8,7 +9,7 @@ using Discord.Audio;
 public class AudioService
 {
     private readonly ConcurrentDictionary<ulong, IAudioClient> ConnectedChannels = new ConcurrentDictionary<ulong, IAudioClient>();
-
+    private CancellationTokenSource cts = new CancellationTokenSource();
     public async Task JoinAudio(IGuild guild, IVoiceChannel target)
     {
         IAudioClient client;
@@ -54,13 +55,20 @@ public class AudioService
         {
             //await Log(LogSeverity.Debug, $"Starting playback of {path} in {guild.Name}");
             using (var ffmpeg = CreateProcess(path))
-            using (var stream = client.CreatePCMStream(AudioApplication.Music))
+            using (AudioOutStream stream = client.CreatePCMStream(AudioApplication.Music))
             {
-                try { await ffmpeg.StandardOutput.BaseStream.CopyToAsync(stream); }
+                try { await ffmpeg.StandardOutput.BaseStream.CopyToAsync(stream, cts.Token); }
+                catch  { }
                 finally { await stream.FlushAsync(); }
             }
         }
     }
+    public async Task StopMusic()
+    {
+        cts.Cancel();
+        cts = new CancellationTokenSource();
+    }
+    
 
     private Process CreateProcess(string path)
     {
@@ -69,7 +77,7 @@ public class AudioService
             FileName = "ffmpeg.exe",
             Arguments = $"-hide_banner -loglevel panic -i \"{path}\" -ac 2 -f s16le -ar 48000 pipe:1",
             UseShellExecute = false,
-            RedirectStandardOutput = true
+            RedirectStandardOutput = true,
         });
     }
 }

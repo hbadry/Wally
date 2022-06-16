@@ -20,11 +20,11 @@ namespace Wally.Utility
             CreateDirectoryIfNotExists(source);
             var youtube = YouTube.Default;
             var vid = youtube.GetVideo(VideoURL);
-            string inputFileName = source + "\\" + vid.FullName;
+            string inputFileName = source + "\\" + Base64Encode(VideoURL);
             File.WriteAllBytes(inputFileName, vid.GetBytes());
 
             if (string.IsNullOrWhiteSpace(MP3Name))
-                MP3Name = $"{inputFileName}";
+                MP3Name = $"{Base64Encode(inputFileName)}";
             var inputFile = new MediaFile { Filename = inputFileName };
             var outputFileName = $"{MP3Name}.mp3";
             var outputFile = new MediaFile { Filename = outputFileName };
@@ -65,6 +65,27 @@ namespace Wally.Utility
             return list.FirstOrDefault();
 
 
+        }
+
+        internal static bool IsSongAlreadyDownloaded(string directory,string songName)
+        {
+            string encodedFilename = Base64Encode(songName);
+            if (File.Exists(Path.Join(directory, encodedFilename)))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes).Replace("/","bs");
+        }
+        public static string Base64Decode(string base64EncodedData)
+        {
+            base64EncodedData = base64EncodedData.Replace("/", "bs");
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
     }
 }

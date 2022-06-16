@@ -57,12 +57,6 @@ namespace Wally
                 await Task.Delay(-1);
             }
         }
-
-        public async Task JoinAsync()
-        {
-
-        }
-
         private Task LogAsync(LogMessage log)
         {
             Console.WriteLine(log.ToString());

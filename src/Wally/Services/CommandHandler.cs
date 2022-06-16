@@ -20,7 +20,7 @@ namespace Wally.Services
         private readonly DiscordSocketClient _client;
         private readonly IServiceProvider _services;
         private List<ulong> _adminUsers = new List<ulong>() { 449229759055003659 };
-        private List<ulong> essiam = new List<ulong>(){ 721696110657142814 , 678979054778449968 };
+        private List<ulong> essiam = new List<ulong>(){ 721696110657142814 , 678979054778449968, 569120640888733696 };
 
         public CommandHandler(IServiceProvider services)
         {

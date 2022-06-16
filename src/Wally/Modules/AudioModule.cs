@@ -43,8 +43,17 @@ public class AudioModule : ModuleBase<ICommandContext>
             await ReplyAsync("Can't find these audio");
             return;
         }
-        string songName = UtilityHelper.SaveMP3("data", music.Url);
+        string songName = "data\\" + music.Url;
+        if (!UtilityHelper.IsSongAlreadyDownloaded("data", music.Url))
+            songName = UtilityHelper.SaveMP3("data", music.Url);
+        else
+            songName = "data\\" + UtilityHelper.Base64Encode(music.Url);
         await _service.JoinAudio(Context.Guild, (Context.User as IVoiceState).VoiceChannel);
         await _service.SendAudioAsync(Context.Guild, Context.Channel,songName);
+    }
+    [Command("stop", RunMode = RunMode.Async)]
+    public async Task StopMusic()
+    {
+        await _service.StopMusic();
     }
 }
