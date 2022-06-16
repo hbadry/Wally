@@ -14,7 +14,9 @@ namespace Wally.Messages
             "?",
             "بطل لعب",
             "بحبك",
-            "why are you gay"
+            "why are you gay",
+            "تيزك حمراا",
+            "ممكن نتعرف؟"
 
         };
     }
