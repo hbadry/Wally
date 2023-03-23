@@ -1,9 +1,11 @@
+
 name: .NET
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 */6 * * *'
+  # stopping the flow form running 
+  #schedule:
+    #- cron:  '0 */6 * * *'
 env:
   GithubBotToken: ${{ secrets.GITHUBBOT_TOKEN }}
 
